@@ -3,125 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALEX MOTORS | Best Car Garage in Arusha</title>
+<title>ALEX MOTORS | Ungalimited Daraja 2 Arusha</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff3c00">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
-body{font-family:'Outfit',sans-serif}
-.live-dot{animation: pulse 1.5s infinite}
-@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
-</style>
+<style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@900;700;500&display=swap');body{font-family:Outfit,sans-serif} .live-dot{animation:pulse 1.2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}</style>
 </head>
-<body class="bg-[#0a0a0a] text-white">
+<body class="bg-black text-white">
+<div class="bg-[#ff3c00] text-xs md:text-sm py-2 px-4 flex justify-between"><span class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full live-dot"></span><span id="status">OPEN - Ungalimited Daraja 2</span></span><span class="font-black">LIPA: Alexander Halgen - 0637484876</span></div>
 
-<!-- TOP BAR LIVE -->
-<div class="bg-[#ff3c00] text-white text-sm py-2 px-4 flex justify-between items-center">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 bg-white rounded-full live-dot"></span>
-<span id="liveStatus">Checking...</span> | Arusha, Tanzania
-</div>
-<div class="font-bold"><i class="fa-solid fa-phone"></i> 0637 484 876</div>
-</div>
-
-<!-- HEADER -->
-<header class="sticky top-0 z-50 bg-black/90 backdrop-blur border-b border-white/10">
-<div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
-<div class="text-2xl font-black tracking-wider">ALEX<span class="text-[#ff3c00]">MOTORS</span></div>
-<nav class="hidden md:flex gap-8 font-semibold text-sm">
-<a href="#services">SERVICES</a><a href="#about">ABOUT</a><a href="#booking">BOOKING</a><a href="#contact">CONTACT</a>
-</nav>
-<a href="https://wa.me/255637484876" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm">WhatsApp</a>
-</div>
+<header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-white/10 px-5 py-4 flex justify-between items-center">
+<div class="font-black text-2xl tracking-widest">ALEX<span class="text-[#ff3c00]">MOTORS</span></div>
+<div class="flex gap-2"><button id="installBtn" class="hidden bg-white text-black px-4 py-2 rounded-full text-xs font-bold"><i class="fa-solid fa-download"></i> Install App</button><a href="https://wa.me/255637484876" class="bg-[#25D366] px-4 py-2 rounded-full text-xs font-bold">WhatsApp</a></div>
 </header>
 
-<!-- HERO -->
-<section class="max-w-7xl mx-auto px-5 py-16 md:py-28 grid md:grid-cols-2 gap-10 items-center">
+<section class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-2 gap-8 items-center">
 <div>
-<div class="inline-flex bg-white/10 border border-white/20 px-4 py-1 rounded-full text-xs mb-5"><i class="fa-solid fa-star text-yellow-400 mr-2"></i> #1 RATED GARAGE IN ARUSHA - 4.9/5</div>
-<h1 class="text-5xl md:text-7xl font-black leading-[0.9]">WE FIX IT<br><span class="text-[#ff3c00]">RIGHT.</span><br>FAST.</h1>
-<p class="text-white/60 mt-6 text-lg">Engine, Diagnostics, Brake, Oil, Body Work. Professional garage in Arusha with live support and same-day service.</p>
-<div class="flex gap-4 mt-8">
-<a href="#booking" class="bg-[#ff3c00] px-8 py-4 rounded-full font-bold">BOOK NOW <i class="fa-solid fa-arrow-right ml-2"></i></a>
-<a href="tel:0637484876" class="bg-white/10 border border-white/20 px-8 py-4 rounded-full font-bold"><i class="fa-solid fa-phone"></i> CALL</a>
+<div class="bg-white/10 border border-white/20 inline-flex px-4 py-1 rounded-full text-xs mb-4">📍 Ungalimited Daraja 2, Arusha | #1 Garage</div>
+<h1 class="text-5xl md:text-7xl font-black leading-[0.85]">ALEX<br><span class="text-[#ff3c00]">MOTORS</span><br>ARUSHA</h1>
+<p class="text-white/60 mt-4">Owned by Alexander Halgen. We fix engine, diagnostics, brakes at Ungalimited Daraja 2. Pay by M-Pesa - fast & trusted.</p>
+<div class="grid grid-cols-2 gap-3 mt-6">
+<a href="#book" class="bg-[#ff3c00] text-center py-4 rounded-2xl font-black">BOOK NOW</a>
+<a href="tel:0637484876" class="bg-white text-black text-center py-4 rounded-2xl font-black">CALL 0637</a>
 </div>
-<div class="flex gap-10 mt-10 border-t border-white/10 pt-8">
-<div><div class="text-3xl font-black">1200+</div><div class="text-white/50 text-sm">Cars Fixed</div></div>
-<div><div class="text-3xl font-black">5 Years</div><div class="text-white/50 text-sm">Experience</div></div>
-<div><div class="text-3xl font-black">24/7</div><div class="text-white/50 text-sm">Support</div></div>
-</div>
-</div>
-<div class="bg-white/5 border border-white/10 rounded-[2rem] p-3">
-<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800" class="rounded-[1.5rem] w-full h-[500px] object-cover">
-<div class="p-5 flex justify-between items-center">
-<div><div class="font-bold">Live Workshop</div><div class="text-white/50 text-sm">Njiro, Arusha - Open Now</div></div>
-<div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center"><i class="fa-solid fa-video"></i></div>
+<div class="mt-6 bg-white/5 border border-white/10 rounded-2xl p-4 flex justify-between text-sm">
+<div><div class="text-white/50">Lipa M-Pesa</div><div class="font-bold text-lg">Alexander Halgen</div></div>
+<div class="text-right"><div class="text-white/50">Number</div><div class="font-bold text-lg">0637 484 876</div></div>
 </div>
 </div>
-                                                                                                      </section>
-  <!-- SERVICES -->
-<section id="services" class="bg-white text-black py-20 px-5">
-<div class="max-w-7xl mx-auto">
-<h2 class="text-5xl font-black">OUR <span class="text-[#ff3c00]">SERVICES</span></h2>
-<div class="grid md:grid-cols-3 gap-6 mt-12">
-<div class="bg-[#f5f5f5] p-8 rounded-3xl"><i class="fa-solid fa-engine text-3xl text-[#ff3c00]"></i><h3 class="font-bold text-xl mt-4">Engine Overhaul</h3><p class="text-black/60 mt-2">Complete engine check and rebuild for Toyota, Nissan, BMW etc.</p><div class="font-black mt-4">From 150k TZS</div></div>
-<div class="bg-[#f5f5f5] p-8 rounded-3xl"><i class="fa-solid fa-screwdriver-wrench text-3xl text-[#ff3c00]"></i><h3 class="font-bold text-xl mt-4">Diagnostics</h3><p class="text-black/60 mt-2">Computer OBD2 scanning - find problem in 15 minutes.</p><div class="font-black mt-4">30k TZS</div></div>
-<div class="bg-[#f5f5f5] p-8 rounded-3xl"><i class="fa-solid fa-oil-can text-3xl text-[#ff3c00]"></i><h3 class="font-bold text-xl mt-4">Oil & Service</h3><p class="text-black/60 mt-2">Original oil, filters, fast service.</p><div class="font-black mt-4">From 80k TZS</div></div>
-<div class="bg-[#f5f5f5] p-8 rounded-3xl"><i class="fa-solid fa-car-burst text-3xl"></i><h3 class="font-bold text-xl mt-4">Brake System</h3><p class="text-black/60 mt-2">Brake pads, discs, ABS repair.</p><div class="font-black mt-4">From 50k TZS</div></div>
-<div class="bg-[#f5f5f5] p-8 rounded-3xl"><i class="fa-solid fa-spray-can-sparkles text-3xl"></i><h3 class="font-bold text-xl mt-4">Body & Painting</h3><p class="text-black/60 mt-2">Professional painting and dent removal.</p><div class="font-black mt-4">Quote</div></div>
-<div class="bg-black text-white p-8 rounded-3xl"><h3 class="font-bold text-xl">Emergency?</h3><p class="text-white/60 mt-2">We tow your car in Arusha 24/7</p><a href="https://wa.me/255637484876" class="bg-[#ff3c00] block text-center py-3 rounded-full font-bold mt-6">WHATSAPP NOW</a></div>
+<div class="rounded-[2rem] overflow-hidden border border-white/10"><img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=800" class="w-full h-[420px] object-cover"><div class="p-4 bg-white/5 flex justify-between"><span class="font-bold">Live Garage - Daraja 2</span><span class="bg-green-500 px-3 py-1 rounded-full text-xs">● OPEN</span></div></div>
+</section>
+
+<section id="book" class="bg-white text-black py-14 px-5 rounded-t-[3rem]">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+<div>
+<h2 class="text-4xl font-black">BOOK + LIPA</h2>
+<p class="text-black/60 mt-2">Book here, it sends to WhatsApp. Then Lipa deposit to confirm.</p>
+<div class="mt-6 bg-[#f5f5f5] p-6 rounded-3xl">
+<input id="n" placeholder="Jina lako" class="w-full p-4 rounded-xl border mb-3">
+<input id="c" placeholder="Gari - mfano Toyota IST" class="w-full p-4 rounded-xl border mb-3">
+<select id="s" class="w-full p-4 rounded-xl border mb-3"><option>Engine</option><option>Diagnostics (30k)</option><option>Oil Service (80k)</option><option>Brake</option><option>Body Painting</option></select>
+<button onclick="book()" class="w-full bg-black text-white py-4 rounded-xl font-black"><i class="fa-brands fa-whatsapp text-green-400"></i> TUMA WHATSAPP</button>
+<button onclick="mpesa()" class="w-full bg-[#ff3c00] text-white mt-3 py-4 rounded-xl font-black"><i class="fa-solid fa-mobile"></i> LIPA M-PESA DEPOSIT</button>
+<p class="text-xs text-center mt-3 text-black/50">Lipa goes to: Alexander Halgen</p>
+</div>
+</div>
+<div>
+<h3 class="font-black text-xl mb-4">FIND US - UNGALIMITED DARAJA 2</h3>
+<iframe class="w-full h-[320px] rounded-3xl" src="https://maps.google.com/maps?q=Ungalimited%20Arusha&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+<div class="mt-4 grid grid-cols-2 gap-3">
+<div class="bg-black text-white p-5 rounded-2xl"><i class="fa-solid fa-location-dot text-[#ff3c00]"></i><div class="font-bold mt-2">Daraja 2</div><div class="text-xs text-white/60">Ungalimited, Arusha</div></div>
+<div class="bg-black text-white p-5 rounded-2xl"><i class="fa-solid fa-clock text-[#ff3c00]"></i><div class="font-bold mt-2" id="openText">Open Now</div><div class="text-xs text-white/60">8AM-7PM Mon-Sat</div></div>
+</div>
 </div>
 </div>
 </section>
 
-<!-- BOOKING LIVE -->
-<section id="booking" class="py-20 px-5 max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-<div>
-<h2 class="text-5xl font-black">BOOK <span class="text-[#ff3c00]">ONLINE</span></h2>
-<p class="text-white/60 mt-4">Fill this form - it will send directly to our WhatsApp live. No waiting.</p>
-<div class="mt-8 bg-white/5 border border-white/10 rounded-3xl p-8">
-<input id="name" placeholder="Your Name" class="w-full bg-black border border-white/20 p-4 rounded-xl mb-4">
-<input id="car" placeholder="Car Model e.g Toyota Harrier" class="w-full bg-black border border-white/20 p-4 rounded-xl mb-4">
-<select id="service" class="w-full bg-black border border-white/20 p-4 rounded-xl mb-4"><option>Engine</option><option>Diagnostics</option><option>Oil Service</option><option>Brake</option><option>Body Painting</option></select>
-<button onclick="sendToWhatsApp()" class="w-full bg-[#ff3c00] py-4 rounded-xl font-black text-lg">SEND BOOKING TO WHATSAPP <i class="fa-brands fa-whatsapp"></i></button>
-</div>
-</div>
-<div>
-<h3 class="font-bold text-xl mb-6">FIND US LIVE - ARUSHA</h3>
-<iframe class="w-full h-[400px] rounded-3xl border-0" src="https://maps.google.com/maps?q=Arusha%20Njiro&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-<div class="mt-6 bg-white/5 border border-white/10 rounded-2xl p-6">
-<div class="flex justify-between"><span><i class="fa-solid fa-location-dot text-[#ff3c00]"></i> Location</span><span class="font-bold">Njiro, Arusha</span></div>
-<div class="flex justify-between mt-3"><span><i class="fa-solid fa-clock text-[#ff3c00]"></i> Hours</span><span class="font-bold">Mon-Sat 8AM-7PM</span></div>
-<div class="flex justify-between mt-3"><span><i class="fa-solid fa-phone text-[#ff3c00]"></i> Phone</span><span class="font-bold">0637 484 876</span></div>
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="border-t border-white/10 py-10 text-center text-white/40 text-sm">
-© 2026 ALEX MOTORS - Arusha. All Rights Reserved. Built with pride in Tanzania.
-</footer>
-
-<!-- FLOATING WHATSAPP LIVE -->
-<a href="https://wa.me/255637484876?text=Habari%20Alex%20Motors,%20nina%20gari..." class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-3xl shadow-2xl z-50"><i class="fa-brands fa-whatsapp"></i></a>
+<div class="bg-black text-center py-8 text-white/30 text-xs">© 2026 ALEX MOTORS - Alexander Halgen - Ungalimited Daraja 2 Arusha</div>
+<a href="https://wa.me/255637484876" class="fixed bottom-5 right-5 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-2xl z-50"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-function updateStatus(){
-const now = new Date();
-const day = now.getDay();
-const hour = now.getHours();
-let open = (day!==0 && hour>=8 && hour<19) || (day===0 && hour>=9 && hour<16);
-document.getElementById('liveStatus').innerHTML = open ? '<span class="text-white font-bold">● OPEN NOW in Arusha - We are working</span>' : '<span>● CLOSED - Opens tomorrow 8AM</span>';
-}
-updateStatus();
-function sendToWhatsApp(){
-let n=document.getElementById('name').value;
-let c=document.getElementById('car').value;
-let s=document.getElementById('service').value;
-if(!n||!c){alert('Please fill name and car');return;}
-let msg=`*NEW BOOKING - ALEX MOTORS ARUSHA*%0A%0AName: ${n}%0ACar: ${c}%0AService: ${s}%0A%0ASource: Website`;
-window.open(`https://wa.me/255637484876?text=${msg}`,'_blank');
-}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+let deferredPrompt;const installBtn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.classList.remove('hidden')});
+installBtn.addEventListener('click',()=>{deferredPrompt.prompt()});
+function book(){let a=document.getElementById('n').value,b=document.getElementById('c').value,c=document.getElementById('s').value;if(!a||!b){alert('Jaza jina na gari');return;}let m=`*ALEX MOTORS - DARAJA 2*%0AName: ${a}%0ACar: ${b}%0AService: ${c}%0ALocation: Ungalimited Daraja 2`;window.open(`https://wa.me/255637484876?text=${m}`)}
+function mpesa(){let m=`*ALEX MOTORS*%0ANatumia deposit%0AJina: ${document.getElementById('n').value}%0ALipa kwa: Alexander Halgen - 0637484876`;window.open(`https://wa.me/255637484876?text=${m}`)}
+const d=new Date();const h=d.getHours();const day=d.getDay();let open=(day!=0&&h>=8&&h<19)||(day==0&&h>=9&&h<16);document.getElementById('status').innerText=open?'● OPEN NOW - Daraja 2':'● CLOSED - Opens 8AM';document.getElementById('openText').innerText=open?'Open Now':'Closed';
 </script>
 </body>
   </html>
