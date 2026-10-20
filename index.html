@@ -71,6 +71,57 @@ installBtn.addEventListener('click',()=>{deferredPrompt.prompt()});
 function book(){let a=document.getElementById('n').value,b=document.getElementById('c').value,c=document.getElementById('s').value;if(!a||!b){alert('Jaza jina na gari');return;}let m=`*ALEX MOTORS - DARAJA 2*%0AName: ${a}%0ACar: ${b}%0AService: ${c}%0ALocation: Ungalimited Daraja 2`;window.open(`https://wa.me/255637484876?text=${m}`)}
 function mpesa(){let m=`*ALEX MOTORS*%0ANatumia deposit%0AJina: ${document.getElementById('n').value}%0ALipa kwa: Alexander Halgen - 0637484876`;window.open(`https://wa.me/255637484876?text=${m}`)}
 const d=new Date();const h=d.getHours();const day=d.getDay();let open=(day!=0&&h>=8&&h<19)||(day==0&&h>=9&&h<16);document.getElementById('status').innerText=open?'● OPEN NOW - Daraja 2':'● CLOSED - Opens 8AM';document.getElementById('openText').innerText=open?'Open Now':'Closed';
+</script><!-- LAYER SYSTEM - Add this -->
+
+<!-- Backdrop -->
+<div id="backdrop" onclick="closeLayers()" class="fixed inset-0 bg-black/70 z-40 hidden"></div>
+
+<!-- Layer 1: Service Details Bottom Sheet -->
+<div id="layer-service" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[30px] z-50 p-6 hidden max-h-[85vh] overflow-y-auto">
+  <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+  <h2 id="layer-title" class="text-2xl font-bold text-black">Engine Fix</h2>
+  <p id="layer-desc" class="text-gray-600 mt-2">We fix engine at Ungalimited Daraja 2...</p>
+  
+  <div class="mt-6 bg-gray-100 rounded-2xl p-4">
+    <p class="font-bold">Price: <span id="layer-price" class="text-orange-600">50k</span></p>
+    <p class="text-sm text-gray-500">Transport: Daraja 2 FREE</p>
+  </div>
+  
+  <button onclick="openLayer('layer-booking')" class="w-full bg-[#FF4D00] text-white py-4 rounded-full font-bold mt-6">BOOK THIS SERVICE</button>
+  <button onclick="closeLayers()" class="w-full bg-white border py-4 rounded-full font-bold mt-3">Close</button>
+</div>
+
+<!-- Layer 2: Booking Form Layer -->
+<div id="layer-booking" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[30px] z-50 p-6 hidden max-h-[90vh] overflow-y-auto">
+  <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+  <h2 class="text-xl font-bold">Book Now</h2>
+  <input id="custName" placeholder="Your Name" class="w-full border rounded-xl p-4 mt-4">
+  <input id="custPhone" placeholder="Phone 06..." class="w-full border rounded-xl p-4 mt-3">
+  <select id="custLocation" class="w-full border rounded-xl p-4 mt-3">
+    <option>Daraja 2 - FREE</option>
+    <option>Kijitonyama - FREE</option>
+    <option>Arusha Mjini +5k</option>
+  </select>
+  <button class="w-full bg-black text-white py-4 rounded-full font-bold mt-6" onclick="submitBooking()">LIPA 1537630 & BOOK</button>
+</div>
+
+<script>
+function openLayer(id, title, desc, price) {
+  closeLayers();
+  if(title){ document.getElementById('layer-title').innerText = title; document.getElementById('layer-desc').innerText = desc; document.getElementById('layer-price').innerText = price; }
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById('backdrop').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeLayers() {
+  document.querySelectorAll('[id^=layer-]').forEach(el=>el.classList.add('hidden'));
+  document.getElementById('backdrop').classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+function submitBooking(){
+  alert('Asante! Booking saved. Lipa Namba 1537630');
+  closeLayers();
+}
 </script>
 </body>
   </html>
