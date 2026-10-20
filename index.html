@@ -59,13 +59,65 @@
 <div id="layer-contact" class="fixed bottom-0 left-0 right-0 bg-[#111] rounded-t-[32px] z-[125] hidden text-white"><div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto mt-4"></div><div class="px-6 pb-8"><h2 class="font-black text-[20px] mt-4">Contact</h2><button onclick="window.location.href='tel:0637484876'" class="w-full bg-white text-black py-4 rounded-full font-black mt-4">📞 CALL 0637484876</button><button onclick="window.open('https://wa.me/255637484876')" class="w-full bg-[#25D366] py-4 rounded-full font-black mt-3">💬 WHATSAPP</button><div class="bg-[#1A1A1A] rounded-2xl p-4 mt-4 border border-[#222]"><p class="text-[11px] text-gray-500">Lipa</p><p class="font-bold">Alexander - 1537630</p></div></div></div>
 
 <script>
-function openLayer(id){document.getElementById('backdrop').classList.remove('hidden');document.getElementById(id).classList.remove('hidden');document.body.style.overflow='hidden';}
-function closeAll(){document.querySelectorAll('[id^=layer-]').forEach(e=>e.classList.add('hidden'));document.getElementById('backdrop').classList.add('hidden');document.body.style.overflow='auto';}
-function openService(t,d,p,i,time){document.getElementById('d-title').innerText=t;document.getElementById('d-desc').innerText=d+' Time: '+time;document.getElementById('d-price').innerText=p;document.getElementById('d-icon').innerText=i;document.getElementById('b-service').innerText=t;document.getElementById('b-total').innerText=p;document.getElementById('p-amount').innerText=p;openLayer('layer-service-detail');}
-function selectLevel(el,price){document.querySelectorAll('.level-btn').forEach(b=>b.className='level-btn border rounded-2xl p-3');el.className='level-btn bg-black text-white border-2 border-black rounded-2xl p-3';document.getElementById('d-price').innerText=price;document.getElementById('b-total').innerText=price;document.getElementById('p-amount').innerText=price;}
-function setLocation(n){document.getElementById('d-location-fee').innerText=n;closeAll();openLayer('layer-service-detail');}
-function confirmPaid(){alert('Asante! Payment received. Tracking ON');openLayer('layer-tracking');}
-</script>
+// --- FIXED DRAG SYSTEM FOR ANDROID + IPHONE ---
+function L(id){document.getElementById('b').classList.remove('hidden');let el=document.getElementById(id);el.classList.remove('hidden');el.style.transform='translateY(0)';document.body.style.overflow='hidden';initDrag(el);}
+function X(){document.querySelectorAll('[id]').forEach(e=>{if(['s','d','k','y','l','m','a','t','p','r','c'].includes(e.id)){e.classList.add('hidden');e.style.transform='';}});document.getElementById('b').classList.add('hidden');document.body.style.overflow='auto';}
+function S(t,d,p,i){document.getElementById('dt').innerText=t;document.getElementById('dd').innerText=d;document.getElementById('dp').innerText=p;document.getElementById('di').innerText=i;document.getElementById('bs').innerText=t;document.getElementById('bt').innerText=p;document.getElementById('pa').innerText=p;L('d');}
+function P(pr){document.getElementById('dp').innerText=pr;document.getElementById('bt').innerText=pr;document.getElementById('pa').innerText=pr;}
+function F(n){document.getElementById('lf').innerText=n;X();setTimeout(()=>L('d'),200);}
+function C(){alert('Asante! Payment received. Tracking ON');L('t');}
+
+// REAL DRAG LOGIC - This was missing
+function initDrag(el){
+  let startY=0, currentY=0, dragging=false;
+  let handle = el.querySelector('.w-12'); // that small bar you circled
+  
+  const onStart = (e)=>{
+    dragging=true;
+    startY = e.touches ? e.touches[0].clientY : e.clientY;
+    el.style.transition='none';
+  };
+  const onMove = (e)=>{
+    if(!dragging) return;
+    currentY = e.touches ? e.touches[0].clientY : e.clientY;
+    let diff = currentY - startY;
+    if(diff>0){ // only allow drag down
+      el.style.transform = `translateY(${diff}px)`;
+    }
+  };
+  const onEnd = (e)=>{
+    if(!dragging) return;
+    dragging=false;
+    el.style.transition='transform 0.3s cubic-bezier(0.32,0.72,0,1)';
+    let diff = currentY - startY;
+    if(diff>100){ // if dragged >100px, close
+      el.style.transform = `translateY(100%)`;
+      setTimeout(()=>X(),200);
+    }else{
+      el.style.transform='translateY(0)';
+    }
+  };
+
+  // Remove old listeners
+  el.ontouchstart=null; el.ontouchmove=null; el.ontouchend=null;
+  
+  // Touch for Android + iPhone
+  el.addEventListener('touchstart', onStart, {passive:true});
+  el.addEventListener('touchmove', onMove, {passive:true});
+  el.addEventListener('touchend', onEnd);
+  
+  // Mouse for laptop testing
+  if(handle){
+    handle.addEventListener('mousedown', onStart);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onEnd);
+    handle.style.cursor='grab';
+  }
+  
+  // Also make the whole backdrop clickable + background dark real-time
+  document.getElementById('b').addEventListener('touchmove', (e)=>e.preventDefault(), {passive:false});
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </script>
 <button onclick="openLayer('layer-contact')" class="fixed bottom-5 right-5 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-[24px] z-20">💬</button>
 </body>
 </html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </html>
