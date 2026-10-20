@@ -1,19 +1,228 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALEX MOTORS - Daraja 2</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+.layer{transition:transform 0.35s cubic-bezier(0.32,0.72,0,1)}
+</style>
 </head>
-<body class="bg-black text-white p-5">
-<h1 class="text-2xl font-black">ALEX MOTORS TEST</h1>
-<button onclick="document.getElementById('layer').classList.remove('hidden')" class="bg-[#FF4D00] mt-10 w-full py-4 rounded-full font-black">BOOK NOW - TAP ME</button>
+<body class="bg-black text-white pb-10">
 
-<div id="layer" class="hidden fixed bottom-0 left-0 right-0 bg-white text-black rounded-t-[30px] p-6 z-50">
-<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
-<h2 class="text-xl font-black mt-4">This is layer!</h2>
-<p class="text-sm text-gray-600 mt-2">If you see this, layers work. Swipe down is next.</p>
-<button onclick="document.getElementById('layer').classList.add('hidden')" class="w-full bg-black text-white py-4 rounded-full mt-6">CLOSE</button>
+<div class="bg-[#FF4D00] text-[11px] font-bold px-4 py-2 flex justify-between">
+<span>● OPEN NOW - Daraja 2</span><span>LIPA 1537630</span>
 </div>
 
+<div class="px-5 py-4">
+<h1 class="text-[22px] font-black">ALEX<span class="text-[#FF4D00]">MOTORS</span></h1>
+<h2 class="text-[42px] font-black leading-[0.9] mt-6">ALEX<br><span class="text-[#FF4D00]">MOTORS</span><br>ARUSHA</h2>
+<p class="text-gray-400 text-sm mt-3">Alexander Halgen - Ungalimited Daraja 2. Engine, brakes, diagnostics.</p>
+
+<button onclick="openL('layer-services')" class="bg-[#FF4D00] w-full py-4 rounded-full font-black mt-6">BOOK NOW - TAP FOR LAYERS</button>
+<button onclick="openL('layer-contact')" class="bg-white text-black w-full py-4 rounded-full font-black mt-3">CALL 0637 484 876</button>
+</div>
+
+<div class="px-5 mt-8 grid grid-cols-2 gap-3">
+<button onclick="openService('Engine','Full computer scan','70k')" class="bg-[#1A1A1A] border border-[#222] rounded-[20px] p-4 text-left"><div class="text-2xl">🔧</div><b>Engine</b><p class="text-xs text-gray-500">From 70k</p></button>
+<button onclick="openService('Brakes','Pads, discs, fluid','50k')" class="bg-[#1A1A1A] border border-[#222] rounded-[20px] p-4 text-left"><div class="text-2xl">🛞</div><b>Brakes</b><p class="text-xs text-gray-500">From 50k</p></button>
+<button onclick="openService('Oil Change','Oil + filter','40k')" class="bg-[#1A1A1A] border border-[#222] rounded-[20px] p-4 text-left"><div class="text-2xl">🛢️</div><b>Oil</b><p class="text-xs text-gray-500">From 40k</p></button>
+<button onclick="openL('layer-all')" class="bg-[#FF4D00] rounded-[20px] p-4 text-left"><div class="text-2xl">➕</div><b>All Services</b><p class="text-xs">12 services</p></button>
+</div>
+
+<!-- BACKDROP -->
+<div id="backdrop" onclick="closeAll()" class="fixed inset-0 bg-black/80 hidden z-40"></div>
+
+<!-- LAYER 1: SERVICES -->
+<div id="layer-services" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#111] rounded-t-[32px] z-50 p-6 max-h-[85vh] overflow-auto">
+<div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto"></div>
+<h2 class="text-2xl font-black mt-4">Chagua Huduma</h2>
+<p class="text-xs text-gray-500 mt-1">Tap any to go deeper - like Bolt</p>
+
+<div class="mt-6 space-y-3">
+<div onclick="openService('Engine Fix','Overhaul, gasket, timing belt. 6 months warranty.','150k+')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>🔧 Engine Fix - 150k+ • Warranty</span><span>›</span></div>
+<div onclick="openService('Diagnostics','Computer scan, error codes','70k')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>💻 Diagnostics - 70k</span><span>›</span></div>
+<div onclick="openL('layer-mechanic')" class="bg-white text-black rounded-2xl p-4 flex justify-between"><span>👨‍🔧 Meet Alexander - Owner 10yrs</span><span>›</span></div>
+<div onclick="openL('layer-pricing')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>💰 Price Breakdown</span><span>›</span></div>
+<div onclick="openL('layer-reviews')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>⭐ Reviews 4.9 (127)</span><span>›</span></div>
+</div>
+<button onclick="closeAll()" class="w-full bg-[#222] py-4 rounded-full mt-6">Close</button>
+</div>
+
+<!-- LAYER 2: SERVICE DETAIL -->
+<div id="layer-detail" class="layer hidden fixed bottom-0 left-0 right-0 bg-white text-black rounded-t-[32px] z-[60] p-6 max-h-[90vh] overflow-auto">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<div class="flex justify-between items-center mt-4">
+<div id="d-icon" class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-2xl">🔧</div>
+<button onclick="openL('layer-reviews')" class="bg-black text-white px-3 py-1.5 rounded-full text-xs">⭐ 4.9</button>
+</div>
+<h2 id="d-title" class="text-[26px] font-black mt-4">Engine</h2>
+<p id="d-desc" class="text-sm text-gray-600 mt-2">Details here</p>
+
+<div class="mt-6">
+<p class="text-[11px] font-bold tracking-widest">CHAGUA LEVEL</p>
+<div class="grid grid-cols-3 gap-2 mt-2">
+<button onclick="setPrice('70k')" class="border-2 border-black bg-black text-white rounded-2xl p-3"><p class="text-xs">Basic</p><b>70k</b></button>
+<button onclick="setPrice('120k')" class="border rounded-2xl p-3"><p class="text-xs">Pro</p><b>120k</b></button>
+<button onclick="setPrice('180k')" class="border rounded-2xl p-3"><p class="text-xs">Full</p><b>180k</b></button>
+</div>
+</div>
+
+<div class="bg-gray-50 rounded-2xl p-4 mt-5 flex justify-between items-center">
+<div><p class="text-xs text-gray-500">Location fee</p><p id="d-loc" class="font-bold text-sm">Daraja 2 = FREE</p></div>
+<button onclick="openL('layer-location')" class="underline text-xs font-bold">Change ›</button>
+</div>
+
+<button onclick="openL('layer-booking')" class="bg-[#FF4D00] text-white w-full py-4 rounded-full font-black mt-6">BOOK NOW - <span id="d-price">70k</span></button>
+</div>
+
+<!-- LAYER 3: BOOKING -->
+<div id="layer-booking" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#F5F5F5] text-black rounded-t-[32px] z-[70] p-6">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Confirm Booking</h2>
+<div class="bg-black text-white rounded-2xl p-4 mt-4 flex justify-between">
+<div><p class="text-xs text-gray-400">Service</p><p id="b-service" class="font-bold">Engine</p></div>
+<div class="text-right"><p class="text-xs text-gray-400">Total</p><p id="b-total" class="font-bold text-[#FF4D00]">70k</p></div>
+</div>
+<input id="custName" placeholder="Jina lako" class="w-full bg-white border rounded-2xl p-4 mt-4">
+<input id="custPhone" placeholder="Phone 06..." class="w-full bg-white border rounded-2xl p-4 mt-3">
+<button onclick="openL('layer-payment')" class="bg-black text-white w-full py-4 rounded-full font-black mt-6">CONTINUE TO PAYMENT ›</button>
+</div>
+
+<!-- LAYER 4: PAYMENT -->
+<div id="layer-payment" class="layer hidden fixed bottom-0 left-0 right-0 bg-white text-black rounded-t-[32px] z-[80] p-6">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Lipa M-Pesa</h2>
+<div class="bg-orange-50 border border-orange-200 rounded-2xl p-4 mt-4">
+<p class="text-xs text-gray-500">LIPA NAMBA</p>
+<p class="text-[32px] font-black">1537630</p>
+<p class="text-sm">Jina: <b>Alexander Halgen</b></p>
+<p class="text-xs mt-2 bg-white p-2 rounded-xl border">Amount: <b id="p-amount">70k TZS</b></p>
+</div>
+<button onclick="alert('Asante!'); openL('layer-tracking')" class="bg-[#25D366] text-white w-full py-4 rounded-full font-black mt-6">✅ NIMELIPA - CONFIRM</button>
+<button onclick="openL('layer-tracking')" class="bg-black text-white w-full py-4 rounded-full font-black mt-3">📲 TRACK MECHANIC LIVE</button>
+</div>
+
+<!-- LAYER 5: LOCATION -->
+<div id="layer-location" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#111] text-white rounded-t-[32px] z-[90] p-6">
+<div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Upo wapi?</h2>
+<div class="mt-4 space-y-2">
+<button onclick="setLoc('Daraja 2 - FREE')" class="w-full bg-white text-black rounded-2xl p-4 flex justify-between"><span>📍 Daraja 2</span><b class="text-green-600">FREE</b></button>
+<button onclick="setLoc('Arusha Mjini - +5k')" class="w-full bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>🏠 Mjini</span><b>+5k</b></button>
+<button onclick="setLoc('Njiro - +10k')" class="w-full bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 flex justify-between"><span>🏘️ Njiro</span><b>+10k</b></button>
+</div>
+</div>
+
+<!-- LAYER 6-9: OTHER -->
+<div id="layer-mechanic" class="layer hidden fixed bottom-0 left-0 right-0 bg-white text-black rounded-t-[32px] z-[90] p-6 text-center">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-6">Alexander Halgen</h2><p class="text-sm text-gray-500">Founder - 10 yrs - 1,247 cars</p>
+<div class="grid grid-cols-3 gap-2 mt-6"><div class="bg-gray-50 rounded-2xl p-3"><b>1,247</b><p class="text-[10px]">Cars Fixed</p></div><div class="bg-gray-50 rounded-2xl p-3"><b>4.9</b><p class="text-[10px]">Rating</p></div><div class="bg-gray-50 rounded-2xl p-3"><b>6yrs</b><p class="text-[10px]">Daraja 2</p></div></div>
+<button onclick="openL('layer-services')" class="bg-black text-white w-full py-4 rounded-full mt-6">VIEW WORK</button>
+</div>
+
+<div id="layer-all" class="layer hidden fixed inset-0 bg-black z-[90] p-5">
+<div class="flex justify-between"><h2 class="text-2xl font-black">All Services</h2><button onclick="closeAll()" class="bg-[#222] w-10 h-10 rounded-full">✕</button></div>
+<div class="grid grid-cols-2 gap-3 mt-6"><div onclick="openService('Engine','Full','70k')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🔧 Engine</div><div onclick="openService('Brakes','Pads','50k')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🛞 Brakes</div><div onclick="openService('Oil','Oil','40k')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🛢️ Oil</div><div onclick="openService('AC','Gas','60k')" class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">❄️ AC</div></div>
+</div>
+
+<div id="layer-tracking" class="layer hidden fixed bottom-0 left-0 right-0 bg-black border-t border-[#222] rounded-t-[32px] z-[100] p-6 text-white">
+<div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">🔴 Live Tracking</h2>
+<div class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 mt-4"><p class="text-xs text-gray-400">Mechanic 4 mins away</p><div class="w-full bg-[#222] h-2 rounded-full mt-3"><div class="bg-[#FF4D00] h-2 w-[70%] rounded-full"></div></div><p class="text-xs mt-3">👨‍🔧 Alexander - Hilux T123</p></div>
+<button onclick="window.open('https://wa.me/255637484876')" class="bg-[#25D366] w-full py-4 rounded-full font-black mt-6">CHAT WHATSAPP</button>
+</div>
+
+<div id="layer-pricing" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#F5F5F5] text-black rounded-t-[32px] z-[90] p-6">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Price Breakdown</h2>
+<div class="mt-4 space-y-2 text-sm"><div class="flex justify-between bg-white p-3 rounded-xl"><span>Labour</span><b>40k</b></div><div class="flex justify-between bg-white p-3 rounded-xl"><span>Diagnosis</span><b>20k free if repair</b></div><div class="flex justify-between bg-black text-white p-4 rounded-xl"><span>Total</span><b class="text-[#FF4D00]">70k</b></div></div>
+</div>
+
+<div id="layer-reviews" class="layer hidden fixed bottom-0 left-0 right-0 bg-white text-black rounded-t-[32px] z-[90] p-6">
+<div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Reviews 4.9 ⭐</h2>
+<div class="mt-4 space-y-2"><div class="bg-gray-50 p-4 rounded-2xl text-sm">"Fixed my Prado in 1 day!" - Juma, Daraja 2</div><div class="bg-gray-50 p-4 rounded-2xl text-sm">"Best garage, Lipa 1537630 easy" - Aisha</div></div>
+</div>
+
+<div id="layer-contact" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#111] text-white rounded-t-[32px] z-[90] p-6">
+<div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto"></div>
+<h2 class="text-xl font-black mt-4">Contact Alex</h2>
+<button onclick="location.href='tel:0637484876'" class="bg-white text-black w-full py-4 rounded-full font-black mt-4">📞 CALL 0637484876</button>
+<button onclick="window.open('https://wa.me/255637484876')" class="bg-[#25D366] w-full py-4 rounded-full font-black mt-3">💬 WHATSAPP</button>
+<div class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4 mt-4"><p class="text-xs text-gray-500">Lipa M-Pesa</p><p class="font-bold">Alexander Halgen - 1537630</p></div>
+</div>
+
+<script>
+// SIMPLE + DRAG - Works on Android
+function openL(id){
+  document.getElementById('backdrop').classList.remove('hidden');
+  let el=document.getElementById(id);
+  el.classList.remove('hidden');
+  el.style.transform='translateY(0)';
+  document.body.style.overflow='hidden';
+  makeDrag(el);
+}
+function closeAll(){
+  document.querySelectorAll('.layer').forEach(e=>{e.classList.add('hidden'); e.style.transform='';});
+  document.getElementById('backdrop').classList.add('hidden');
+  document.body.style.overflow='auto';
+  document.getElementById('backdrop').style.opacity='';
+}
+function openService(t,d,p){
+  document.getElementById('d-title').innerText=t;
+  document.getElementById('d-desc').innerText=d;
+  document.getElementById('d-price').innerText=p;
+  document.getElementById('b-service').innerText=t;
+  document.getElementById('b-total').innerText=p;
+  document.getElementById('p-amount').innerText=p;
+  openL('layer-detail');
+}
+function setPrice(p){
+  document.getElementById('d-price').innerText=p;
+  document.getElementById('b-total').innerText=p;
+  document.getElementById('p-amount').innerText=p;
+}
+function setLoc(n){
+  document.getElementById('d-loc').innerText=n;
+  closeAll();
+  setTimeout(()=>openL('layer-detail'),200);
+}
+
+// BOLT DRAG - Works on all Androids
+function makeDrag(el){
+  let startY=0, curY=0, dragging=false;
+  el.addEventListener('touchstart', function(e){
+    dragging=true; startY=e.touches[0].clientY; el.style.transition='none';
+  }, {passive:true});
+  
+  el.addEventListener('touchmove', function(e){
+    if(!dragging) return;
+    curY=e.touches[0].clientY;
+    let diff=curY-startY;
+    if(diff>0){
+      el.style.transform='translateY('+diff+'px)';
+      document.getElementById('backdrop').style.opacity=1-diff/400;
+    }
+  }, {passive:true});
+  
+  el.addEventListener('touchend', function(){
+    if(!dragging) return;
+    dragging=false;
+    el.style.transition='transform 0.35s cubic-bezier(0.32,0.72,0,1)';
+    let diff=curY-startY;
+    document.getElementById('backdrop').style.opacity='';
+    if(diff>100){
+      el.style.transform='translateY(100%)';
+      setTimeout(closeAll,200);
+    }else{
+      el.style.transform='translateY(0)';
+    }
+  });
+}
+</script>
+
 </body>
-</html>
+  </html>
