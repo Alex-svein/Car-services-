@@ -1,29 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ALEX MOTORS - Daraja 2</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#FF4D00">
 <script src="https://cdn.tailwindcss.com"></script>
+<style>.layer{transition:transform 0.35s cubic-bezier(0.32,0.72,0,1)}</style>
 </head>
 <body class="bg-black text-white p-6">
 
 <h1 class="text-2xl font-black">ALEX<span class="text-[#FF4D00]">MOTORS</span></h1>
-<p class="text-gray-400 text-sm mt-2">Ungalimited Daraja 2, Arusha</p>
+<p class="text-gray-400 text-sm mt-1">Ungalimited Daraja 2, Arusha</p>
 
 <div class="mt-10 bg-[#1A1A1A] border border-[#222] rounded-2xl p-6">
-<p class="font-bold">Step 1: PWA Base</p>
-<p class="text-xs text-gray-500 mt-2">If you see this, base works. Lipa: 0101010 - Alexander Halgen</p>
+<p class="font-bold">Lipa M-Pesa</p>
+<p class="text-sm mt-1">1537630 - Alexander Halgen</p>
+<p class="text-xs text-gray-500 mt-2">Correct Lipa now ✅</p>
 </div>
 
-<button class="bg-[#FF4D00] w-full py-4 rounded-full font-black mt-10">BOOK NOW</button>
+<button onclick="openL()" class="bg-[#FF4D00] w-full py-4 rounded-full font-black mt-10">BOOK NOW</button>
+
+<!-- ONE LAYER ONLY - FOR TESTING DRAG -->
+<div id="backdrop" onclick="closeL()" class="fixed inset-0 bg-black/80 hidden z-40"></div>
+
+<div id="layer-1" class="layer hidden fixed bottom-0 left-0 right-0 bg-[#111] rounded-t-[32px] z-50 p-6">
+<div class="w-12 h-1.5 bg-[#333] rounded-full mx-auto"></div>
+<h2 class="text-2xl font-black mt-4">Chagua Huduma</h2>
+<p class="text-xs text-gray-500 mt-1">Try drag that gray bar down ↓</p>
+
+<div class="mt-6 space-y-3">
+<div class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🔧 Engine Fix - 70k</div>
+<div class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🛞 Brakes - 50k</div>
+<div class="bg-[#1A1A1A] border border-[#222] rounded-2xl p-4">🛢️ Oil Change - 40k</div>
+</div>
+
+<button onclick="closeL()" class="w-full bg-[#222] py-4 rounded-full mt-6">Close - or swipe down</button>
+</div>
 
 <script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js');
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+
+function openL(){
+  document.getElementById('backdrop').classList.remove('hidden');
+  let el=document.getElementById('layer-1');
+  el.classList.remove('hidden');
+  el.style.transform='translateY(0)';
+  document.body.style.overflow='hidden';
 }
+function closeL(){
+  let el=document.getElementById('layer-1');
+  el.style.transform='translateY(100%)';
+  setTimeout(()=>{
+    el.classList.add('hidden');
+    el.style.transform='';
+    document.getElementById('backdrop').classList.add('hidden');
+    document.body.style.overflow='auto';
+  },200);
+}
+
+// DRAG FOR ANDROID - THIS IS WHAT YOU CIRCLED
+let startY=0, curY=0, dragging=false;
+let layer=document.getElementById('layer-1');
+layer.addEventListener('touchstart', e=>{
+  dragging=true; startY=e.touches[0].clientY; layer.style.transition='none';
+},{passive:true});
+layer.addEventListener('touchmove', e=>{
+  if(!dragging) return;
+  curY=e.touches[0].clientY;
+  let diff=curY-startY;
+  if(diff>0) layer.style.transform='translateY('+diff+'px)';
+},{passive:true});
+layer.addEventListener('touchend', e=>{
+  dragging=false; layer.style.transition='transform 0.35s cubic-bezier(0.32,0.72,0,1)';
+  let diff=curY-startY;
+  if(diff>80) closeL(); else layer.style.transform='translateY(0)';
+});
 </script>
 </body>
-</html>
+  </html>
